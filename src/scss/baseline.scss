@@ -1,0 +1,282 @@
+
+@mixin skeleton_dark($BGP, $BGS, $CN, $FGP, $FGS) {
+    @include skeleton("lighten", "darken", $BGP, $BGS, $CN, $FGP, $FGS);
+}
+@mixin skeleton_light($BGP, $BGS, $CN, $FGP, $FGS) {
+    @include skeleton("darken", "lighten", $BGP, $BGS, $CN, $FGP, $FGS);
+}
+
+@mixin elements_dark($name, $BGP, $BGS, $CN, $FGP, $FGS) {
+    @include elements($name, "lighten", "darken", $BGP, $BGS, $CN, $FGP, $FGS);
+}
+@mixin elements_light($name, $BGP, $BGS, $CN, $FGP, $FGS) {
+    @include elements($name, "darken", "lighten", $BGP, $BGS, $CN, $FGP, $FGS);
+}
+
+
+
+@mixin skeleton($F1, $F2, $BGP, $BGS, $CN, $FGP, $FGS) {
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                   GLOBALS
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    body {
+        background:         $BGP;
+        color:              $FGP;
+    }
+    a:link, a:visited, a:active {
+        color:              $FGP;
+    }
+    a:hover {
+        color:              $FGS;
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 MAIN LAYOUT
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    .bktop {
+        background:         call($F2, $FGP, 15%);
+        color:              $BGS;
+        box-shadow:         -3px 4px 10px 0px rgba(0,0,0,0.75);
+        border-color:       call($F2, $FGP, 15%);
+    }
+
+    .bkmright {
+        background:         $BGS;
+        color:              $FGS;
+        box-shadow:         -4px 4px 10px 0px rgba(0,0,0,0.75);
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 login layout
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    .loginmain {
+        background:         $BGS;
+        border-color:       $FGP;
+        color:              $FGS;
+    }
+    .loginmain .lgerror {
+    }
+
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                                 menu layout
+    * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+    .authinfo {
+        background:         call($F1, $BGS, 10%);
+        color:              call($F1, $FGS, 25%);
+        border-color:       call($F1, $CN, 25%);
+    }
+    .authinfo .bbacred:link, .authinfo .bbacred:visited, .authinfo .bbacred:active {
+        background:         transparent;
+    }
+
+    .menutitle, .menutitle a:link, .menutitle  a:visited, .menutitle a:active {
+        color:              $FGS;
+    }
+    .menutitle:hover {
+        background:         call($F1, $CN, 25%);
+        color:              call($F1, $BGS, 0%);
+    }
+
+    .menutitle.selected {
+        background:         call($F1, $CN, 25%);
+        color:              call($F1, $BGS, 0%);
+    }
+    /* * * * * * * * * * * * UPMENU layout * * * * * * * * * */
+    .upmenu {
+        /*border-color:       $CN;*/
+    }
+    .upaitem, .upaitem:link, .upaitem:active, .upaitem:visited {
+        color:              $FGS;
+    }
+    .upaitem:hover {
+        background:         call($F1, $CN, 25%);
+        color:              call($F1, $BGS, 0%);
+    }
+    .upaitem.upseled {
+        background:         call($F1, $CN, 25%);
+        color:              call($F1, $BGS, 0%);
+    }
+
+    /* table row link */
+    .bbatabler.bbatinner.rowlink {
+        color:              $FGS;
+    }
+
+    /* CUSTOM */
+    .bbaqi {
+        background:         call($F1, $BGS, 10%);
+        border-color:       call($F1, $BGS, 15%);
+    }
+    .bbaqi.bbaqiedit, .bbaqi.bbaqiedit:link, .bbaqi.bbaqiedit:visited, .bbaqi.bbaqiedit:active {
+        background:         call($F1, $BGS, 15%);
+        border-color:       call($F1, $BGS, 25%);
+        color:              call($F1, $FGS, 0%);
+        box-shadow:         -3px 3px 5px 0px rgba(0,0,0,0.4);
+    }
+    .bbaqi.bbaqiedit:hover {
+        background:         call($F1, $BGS, 25%);
+        border-color:       call($F1, $BGS, 35%);
+    }
+    .evadd {
+        border-color:       call($F1, $BGS, 45%);
+    }
+    .updownr .tcell:hover {
+        cursor:             default;
+    }
+    .updownr .tcell:hover {
+        background:         call($F1, $BGS, 25%);
+        color:              call($F1, $BGS,  0%);
+    }
+
+    .bbpathitem .tcell.tr, .bbpathitem .tcell.tr:link, .bbpathitem .tcell.tr:visited, .bbpathitem .tcell.tr:active {
+        background:         call($F1, $BGS, 10%);
+        border-color:       call($F1, $BGS, 30%);
+        color:              call($F1, $FGS, 0%);
+    }
+    .bbpathitem .tcell.tr:hover {
+        background:         call($F1, $BGS, 15%);
+        border-color:       call($F1, $BGS, 30%);
+    }
+}
+
+
+@mixin elements($name, $F1, $F2, $BGP, $BGS, $CN, $FGP, $FGS) {
+    /* * * * * * * * * main ui * * * * * * * * */
+    .loginmain .lgerror#{$name} {
+        color:              call($F1, $BGS, 45%);
+    }
+    .cookiediv#{$name} {
+        background:         $BGS;
+        color:              $FGP;
+        border-color:       $CN;
+    }
+    .cookiediv#{$name}:hover {
+        background:         call($F1, $BGS, 15%);
+        border-color:       call($F1, $CN, 20%);
+        color:              call($F1, $FGP, 20%);
+    }
+
+
+    /* * * * * * * * * standard txt * * * * * * * * */
+    .bbaftxtsubmit#{$name} { /* form submit separator line */
+        border-color:       call($F1, $BGS, 35%);
+    }
+    .bbaftxt.bbreterror#{$name}, .bbaftxt.bbretinfo#{$name} { /* info/eror dialog */
+        background:         call($F1, $FGP,  0%);
+        color:              call($F1, $BGS,  0%);
+        border-color:       call($F1, $BGS, 35%);
+    }
+    .bbaftxt.bbreterror#{$name}:hover { /* info/eror dialog */
+        background:         call($F2, $FGP,  15%);
+        color:              call($F2, $BGS,  10%);
+        border-color:       call($F1, $BGS,  25%);
+    }
+    /* * * * * * * * * standard sep * * * * * * * * */
+    .bbafpsep#{$name} .bbafsepcl { /* thin separator */
+        border-color:       call($F1, $BGS, 25%);
+    }
+    .bbafpsep.bbafpsepbig#{$name} .bbafsepcl { /* thick separator */
+        border-color:       call($F1, $CN, 0%);
+    }
+    .afhover#{$name} .bbafser:hover { /* hover effect separator */
+        background:         call($F1, $BGS, 5%);
+    }
+    /* * * * * * * * * standard table * * * * * * * * */
+    .bbatable#{$name} { /* outter borders */
+        border-color:       call($F1, $BGS, 30%);
+    }
+    .bbatabler#{$name} { /* rows */
+        background:         call($F1, $BGS, 10%);
+    }
+    .bbatabler#{$name}:hover { /* rows hover */
+        background:         call($F1, $BGS, 5%);
+    }
+    .bbatabler.bbatheader#{$name}, .bbatabler.bbatfooter#{$name} { /* rows headers */
+        background:         call($F1, $BGS, 20%);
+    }
+    .bbatabler.bbatheader#{$name} .bbatablec.bbac, .bbatabler.bbatheader#{$name} .bbatablec.bbacr,
+        .bbatabler.bbatfooter#{$name} .bbatablec.bbac, .bbatabler.bbatfooter#{$name} .bbatablec.bbacr { /* headers borders */
+        border-color:       call($F1, $BGS, 25%);
+    }
+    .bbatabler.bbatinner#{$name} .bbatablec.bbac, .bbatabler.bbatinner#{$name} .bbatablec.bbacr { /* inner borders */
+        border-color:       call($F1, $BGS, 15%);
+    }
+    /* * * * * * * * * standard form and elements * * * * * * * * */
+    .bbaform#{$name} {  /* a form */
+        background:         call($F1, $BGS, 5%);
+        border-color:       call($F1, $BGS, 25%);
+    }
+
+    .bbaform#{$name}.bbfedit {  /* an edit form */
+        background:         call($F1, $BGS, 10%);
+        border-color:       call($F1, $BGS, 30%);
+    }
+
+    .bbafin#{$name}, .bbafin#{$name}:link, .bbafin#{$name}:visited, .bbafin#{$name}:active { /* a input */
+        color:              call($F1, $FGS,  0%);
+        border-color:       call($F1, $BGS,  25%);
+    }
+    .bfafbtn#{$name} { /* a button */
+        background:         call($F1, $CN, 10%);
+        color:              call($F1, $FGS, 0%);
+        border-color:       call($F1, $CN,  25%);
+    }
+    .bfafbtn#{$name}:hover,
+        .bfafbtn#{$name}:focus:hover, .bbafin#{$name}:focus:hover { /* hover an input or button */
+        color:              call($F1, $BGS, 0%);
+        background:         call($F1, $CN,  30%);
+        border-color:       call($F1, $FGP, 0%);
+    }
+    .bfafbtn#{$name}:hover { /* a button when hover */
+        background:         call($F1, $BGS, 30%);
+        color:              call($F2, $BGS, 5%);
+    }
+    .bbafin#{$name}:focus, .bbafin#{$name}:focus:hover { /* a focused input */
+        color:              call($F2, $BGS, 30%);
+        background:         call($F1, $CN,  15%);
+        border-color:       call($F1, $FGP, 0%);
+    }
+    .bbafinhin:checked + .bbafin#{$name} { /* an input when checked */
+        color:              call($F1, $FGS, 0%);
+        border-color:       call($F1, $FGS, 20%);
+    }
+    .bbafinhin:checked + .bbafin#{$name} span { /* an input label's icon when checked */
+        color:              call($F1, $FGS, 0%);
+    }
+
+    .bbafinhin:not(:checked) + .bbafin.bbafroundbtn#{$name} { /* a rounded input when not checked */
+        background:         transparent;
+        color:              call($F1, $FGP,  0%);
+        border-color:       call($F1, $FGP, 0%);
+    }
+    .bbafinhin:not(:checked) + .bbafin.bbafroundbtn#{$name}:hover { /* a rounded input when not checked and hover */
+        background:         call($F1, $BGS, 5%);
+    }
+    .bbafinhin:checked + .bbafin.bbafroundbtn#{$name},
+        .bbafin.bbafroundbtn.checked#{$name} { /* a rounded input when checked */
+        background:         call($F1, $BGP, 40%);
+        color:              call($F2, $BGP,  0%);
+        border-color:       call($F1, $FGP,  0%);
+    }
+    .bbafinhin:checked + .bbafin.bbafroundbtn#{$name}:hover { /* a rounded input when checked and hover */
+        background:         call($F1, $BGS, 25%);
+    }
+
+    /* CUSTOM */
+    .rmbg {
+        background:         transparent;
+    }
+    .loadingbee.showerror#{$name} {
+        box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.7);
+        border-color:       call($F1, $BGS,  50%);
+        background:         call($F1, $BGS,  10%);
+    }
+    .loadingbee.showerror#{$name} .error {
+        background:         call($F1, $BGS,  0%);
+        color:              call($F1, $FGP,  0%);
+        border-color:       call($F1, $BGS,  50%);
+    }
+}
+
+
+

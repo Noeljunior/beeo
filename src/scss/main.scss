@@ -1,0 +1,790 @@
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                               GLOBALS
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+html, body {
+    margin:             0px;
+    font-family:        sans-serif;
+    width:              100%;
+    height:             100%;
+}
+a:link, a:visited, a:active {
+    text-decoration:    none;
+}
+a:hover {
+    text-decoration:    none;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                               HELPERS
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.fleft  { float: left;  }
+.fright { float: right; }
+.fclear { clear: both; }
+.hidethis { visibility: hidden; }
+.fcentre { margin: auto; }
+.center { text-align: center; }
+.removethis { display: none; }
+.restorethis { display: inherit; }
+.ttable  { display: table;  }
+.trow { display: table-row; }
+.tcell { display: table-cell; }
+
+
+
+
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             MAIN LAYOUT
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.bktop {
+    height:             70px;
+    box-sizing:         border-box;
+    z-index:            1;
+    text-transform:     uppercase;
+    position:           relative;
+    font-size:          xx-large;
+    font-weight:        bold;
+    padding: 15px;
+    border-bottom:      solid 2px;
+}
+
+.bkmiddle {
+    height:             calc(100% - 70px - 40px);
+}
+
+.bkbottom {
+    height:             40px;
+    line-height:        40px;
+    vertical-align:     middle;
+    box-sizing:         border-box;
+    position:           relative;
+    text-align:         center;
+}
+
+
+.bkmleft {
+    float:              left;
+    height:             100%;
+    width:              calc(250px);
+    padding:            15px;
+    padding-top:        20px;
+    box-sizing:         border-box;
+}
+.bkmright {
+    float:              right;
+    height:             100%;
+    width:              calc(100% - 250px);
+    overflow-y:         scroll;
+    padding:            20px;
+    box-sizing:         border-box;
+    position:           relative;
+}
+
+.loginmain {
+    padding:            25px;
+
+    min-width:          300px;
+    min-height:         50px;
+
+    position:           absolute;
+    left:               50%;
+    top:                50%;
+    transform:          translate(-50%, -50%);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             login layout
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.loginmain {
+    background:         CBG2;
+    border-style:       solid;
+    border-width:       2px;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    border-radius:      3px;
+}
+.loginmain .lgtitle, .loginmain .lgerror {
+    text-align:         center;
+    margin-bottom:      25px;
+}
+.loginmain .lgerror {
+    font-weight:        bold;
+}
+.loginmain .bbafsep .bbafsepr {
+    width:              175px;
+}
+.loginmain .bfafbtn {
+    width:              215px;
+    margin-top:         20px;
+}
+.loginmain .bfafbtn.bbacred {
+    margin-top:         45px;
+}
+.loginmain .lgroleform {
+    display:            block;
+    text-align:         center;
+}
+.loginmain .lgroleform .bfafbtn {
+    margin-top:         5px;
+}
+
+.loginmain .bbacred:link, .loginmain .bbacred:visited, .loginmain .bbacred:active {
+    background:         transparent;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             menu layout
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.authinfo {
+    margin-bottom:      30px;
+    padding:            10px;
+    border-style:       solid;
+    border-width:       2px;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    border-radius:      3px;
+}
+.authuser {
+    font-size:          large;
+    text-align:         center;
+}
+
+.authinfo .bbacred:link, .authinfo .bbacred:visited, .authinfo .bbacred:active {
+    margin-top:         10px;
+    display:            block;
+    padding:            5px;
+    font-size:          medium;
+    text-align:         center;
+}
+
+.menuitem {
+    margin-top:         10px;
+}
+.menutitle, .menutitle a:link, .menutitle  a:visited, .menutitle a:active {
+    padding:            10px;
+    font-size:          larger;
+    text-transform:     uppercase;
+    display:            block;
+}
+.menutitle:hover {
+}
+
+.menutitle.selected {
+    font-weight:        bold;
+}
+/* * * * * * * * * * * * UPMENU layout * * * * * * * * * */
+.upmenu {
+    text-align:         center;
+    /*border-bottom:      solid 2px $CBN;*/
+    margin-bottom:      10px;
+    padding-bottom:     10px;
+}
+
+.upaitem, .upaitem:link, .upaitem:active, .upaitem:visited {
+    margin-left:        10px;
+    display:            inline-block;
+    height:             40px;
+    line-height:        40px;
+    vertical-align:     middle;
+    /*border:             solid 2px $CBN;
+    border-bottom:      0px;*/
+    font-size:          medium;
+    text-transform:     uppercase;
+}
+.upaitem.upfirst {
+    margin-left:        0px;
+}
+.upaitem.upseled {
+    font-weight:        bold;
+}
+.upaitem:hover {
+}
+
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             cookie layout
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.cookiediv {
+    padding:            25px;
+
+    min-width:          5px;
+    max-width:          250px;
+    min-height:         5px;
+
+    position:           absolute;
+    right:              30px;
+    top:                50px;
+    z-index:            10;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    border-style:       solid;
+    border-width:       2px;
+    border-radius:      3px;
+}
+.cookiediv:hover {
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             theme chooser
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.bbthemechooser.inlogin {
+    position:           absolute;
+    right:              10px;
+    bottom:             10px;
+    display:            inline;
+    width:              initial;
+}
+.bbthemechooser.inmain {
+    position:           absolute;
+    right:              10px;
+    bottom:             10px;
+    display:            inline;
+    padding: 0px;
+    width:              initial;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                             lang chooser
+* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+.bblangchooser.inlogin {
+    position:           absolute;
+    right:              10px;
+    top:                10px;
+    display:            inline;
+    width:              initial;
+}
+.bblangchooser.inmain {
+    position:           absolute;
+    right:              10px;
+    top:                10px;
+    display:            inline;
+    padding:            0px;
+    width:              initial;
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+                           AUTOBB LAYOUTS
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
+ * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * *  standard txt * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+.bbaftxt {
+
+}
+/* * * * * * * * * standard txt: submit * * * * * * * * */
+.bbaftxtsubmit {
+    margin-top:         40px;
+    padding-top:        20px;
+    border-top-style:   solid;
+    border-top-width:   1px;
+    text-align:         right;
+}
+/* * * * * * * * * standard txt: info/eror dialog * * * * * * * * */
+.bbaftxt.bbreterror, .bbaftxt.bbretinfo {
+    padding:            20px;
+    margin:             20px;
+    font-weight:        bold;
+    border-style:       solid;
+    border-width:       2px;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    border-radius:      3px;
+    /*position:           absolute;
+    top:                20px;
+    left:               20px;*/
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * *  standard separator * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+.bbafimg.bbticon {
+    max-height:         35px;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * *  standard separator * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+.bbafsep {
+    display:            table;
+    width:              100%;
+    border-collapse:    collapse;
+    margin-top:         5px;
+    margin-bottom:      5px;
+}
+.bbafser {
+    display:            table-row;
+}
+.bbafsepl, .bbafsepr, .bbafsepc {
+    display:            table-cell;
+    vertical-align:     middle;
+    padding:            5px;
+}
+.bbafsepl {
+}
+.bbafsepr {
+}
+.bbafsepc {
+}
+.bbafsepcl {
+}
+/* * * * * * * * * standard separator: txt * * * * * * * * */
+.bbafstxt .bbafsepr {
+    width:              60%;
+}
+.bbafstxt.view .bbafsepr {
+}
+/* * * * * * * * * standard separator: item * * * * * * * * */
+.bbafsitem .bbafsepr {
+    width:              60%;
+    text-align:         right;
+}
+.bbafsitem .bbafsepc {
+    display:            none;
+}
+/* * * * * * * * * standard separator: list item * * * * * * * * */
+.bbafsitemlist .bbafsepr {
+    width:              60%;
+    text-align:         right;
+}
+.bbafsitemlist .bbafsepc {
+    display:            none;
+}
+/* * * * * * * * * standard separator: very small item * * * * * * * * */
+.bbafsvsitem .bbafsepr {
+    width:              50px;
+    text-align:         center;
+}
+.bbafsvsitem .bbafsepc {
+    display:            none;
+}
+/* * * * * * * * * standard separator: title * * * * * * * * */
+.bbaftsep.bbafsep {
+    margin:             auto;
+}
+.bbaftsep .bbafsepl {
+    padding:            0px;
+    width:              50px;
+}
+.bbaftsep .bbafsepr {
+    padding:            0px;
+}
+.bbaftsep .bbafsepc {
+    display:            none;
+}
+/* * * * * * * * * standard separator: item observations * * * * * * * * */
+.bbafsobs .bbafsepl, .bbafsobs .bbafsepr, .bbafsobs .bbafsepc {
+    padding:            0px;
+}
+.bbafsobs .bbafsepr {
+    padding-left:       10px;
+    /*width:              100px;/**/
+    width:              30%;/**/
+}
+.bbafsobs .bbafsepc {
+    display:            none;
+}
+
+.bbafsobs.view .bbafsepl {
+    /*text-align:         center;/**/
+}
+.bbafsobs.view .bbafsepr {
+    padding-left:       10px;
+    width:              40%;/**/
+}
+
+/* * * * * * * * * standard separator: page separator * * * * * * * * */
+.bbafpsep.bbafsep {
+    margin-top:         25px;
+    margin-bottom:      10px;
+    margin-left:        0px;
+}
+.bbafpsep .bbafser:hover {
+    background:         inherit;
+}
+.bbafpsep .bbafsepc {
+    padding-right:      0px;
+}
+.bbafpsep .bbafsepl {
+    width:              1px;
+    white-space:        nowrap;
+    font-weight:        bold;
+    padding-left:       0px;
+    text-transform:     uppercase;
+}
+.bbafpsep .bbafsepr {
+    display:            none;
+}
+.bbafpsep .bbafsepcl {
+    border-bottom-style:solid;
+    border-bottom-width:1px;
+    height:             0px;
+    width:              100%;
+}
+/* a big bold sep */
+.bbafpsep.bbafpsepbig.bbafsep {
+    margin-top:         55px;
+    margin-bottom:      25px;
+}
+.bbafpsep.bbafpsepbig .bbafsepl {
+    font-size:          large;
+    font-weight:        bold;
+}
+.bbafpsep.bbafpsepbig .bbafsepcl {
+    border-bottom-style:solid;
+    border-bottom-width:2px;
+}
+.bbafpsep.bbafpsepf.bbafsep {
+    margin-top:         0px;
+}
+/* a small tiny separator */
+.bbafpsep.small.bbafsep {
+}
+.bbafpsep.small .bbafsepl {
+    font-size:          medium;
+    font-weight:        bold;
+}
+.bbafpsep.small .bbafsepcl {
+}
+/* * * * * * * * * standard separator:hover hilight * * * * * * * * */
+.afhover .bbafser:hover {
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * *  standard table * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+.bbatable {
+    display:            table;
+    width:              100%;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    border-spacing:     0px;
+    border-collapse:    separate;
+    border-style:       solid;
+    border-width:       2px;
+    border-radius:      3px;
+    table-layout:       fixed;
+}
+.bbatabler {
+    display:            table-row;
+}
+.bbatabler:hover {
+}
+.bbatablec {
+    display:            table-cell;
+    vertical-align:     middle;
+    text-align:         center;
+    padding:            5px;
+    word-wrap:          break-word;
+}
+/* Header and footer */
+.bbatabler.bbatheader, .bbatabler.bbatfooter {
+}
+.bbatabler.bbatheader .bbatablec, .bbatabler.bbatfooter .bbatablec {
+    font-weight:        bold;
+    padding:            10px;
+}
+/* Borders headers and footers */
+.bbatabler.bbatheader .bbatablec.bbac, .bbatabler.bbatheader .bbatablec.bbacr,
+    .bbatabler.bbatfooter .bbatablec.bbac, .bbatabler.bbatfooter .bbatablec.bbacr {
+    border-left-style:  solid;
+    border-left-width:  1px;
+}
+/* Borders inner */
+.bbatabler.bbatinner .bbatablec.bbac, .bbatabler.bbatinner .bbatablec.bbacr {
+    border-left-style:  solid;
+    border-left-width:  1px;
+}
+/* table row link */
+.bbatabler.bbatinner.rowlink {
+    cursor:             pointer;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * standard form * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * */
+.bbaform {
+    width:              60%;
+    min-width:          400px;
+    max-width:          1024px;
+    border-style:       solid;
+    border-width:       2px;
+    padding:            15px;
+    box-shadow:         -3px 3px 10px 0px rgba(0,0,0,0.75);
+    margin:             auto;
+    border-radius:      3px;
+}
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * standard inputs * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * */
+.bbafin {
+    width:              100%;
+    padding:            5px;
+    font-size:          medium;
+    font-weight:        bold;
+    border:             none;
+    border-bottom-style:solid;
+    border-bottom-width:2px;
+    background:         transparent;
+    outline:            none;
+}
+.bbafin:focus {
+}
+/* an hidden part of a check input */
+.bbafinhin {
+    display:            none;
+}
+/* internal icon */
+.bbafin span {
+    margin-right:       10px;
+    font-size:          large;
+    visibility:         hidden;
+}
+/* check state */
+.bbafinhin:checked + .bbafin {
+}
+.bbafinhin:checked + .bbafin span {
+    visibility:         visible;
+}
+/* an input on a table's row */
+.bbafin.bbaffot {
+    width:              calc(100% - 20px);
+    margin:             3px;
+    margin-top:         10px;
+    margin-bottom:      10px;
+}
+/* * * * * * * * * standard inputs: date/time * * * * * * * * */
+.bbafindate, .bbafintime, .bbafindatetime-local {
+    text-align:         center;
+    font-family:        sans-serif;
+}
+/* * * * * * * * * standard inputs: number/date/time * * * * * * * * */
+.bbafin[type=number]::-webkit-inner-spin-button,
+    .bbafin[type=number]::-webkit-outer-spin-button,
+    .bbafin[type=date]::-webkit-inner-spin-button,
+    .bbafin[type=date]::-webkit-outer-spin-button,
+    .bbafin[type=datetime-local]::-webkit-inner-spin-button,
+    .bbafin[type=datetime-local]::-webkit-outer-spin-button,
+    .bbafin[type=time]::-webkit-inner-spin-button,
+    .bbafin[type=time]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance:    none;
+    appearance:         none;
+    margin:             0;
+}
+/* * * * * * * * * standard inputs: lists [bool, one, many] * * * * * * * * */
+.bbafinbool, .bbafinone, .bbafinmany {
+    width:              initial;
+    display:            inline-block;
+    vertical-align:     middle;
+    text-align:         center;
+    font-size:          medium;
+    font-weight:        bold;
+    padding:            5px;
+    padding-right:      10px;
+    margin-left:        5px;
+    margin-right:       5px;
+}
+/* * * * * * * * * standard inputs: textarea * * * * * * * * */
+.bbafin.bbafintextarea {
+    resize:             vertical;
+    height:             100px;
+    overflow:           auto;
+    font-family:        sans-serif;
+    /*border-left-width:  2px;
+    border-left-style:  solid;
+    border-right-width: 2px;
+    border-right-style: solid;*/
+}
+.bbafin.bbafintextarea.small {
+    height:             100%;
+    resize:             none;
+}
+.bbafin.bbafintextareadiv {
+    min-height:         100px;
+}
+/* in a table */
+.bbafinbool.bbaffot {
+    width:              unset;
+}
+/* * * * * * * * * standard inputs: btn * * * * * * * * */
+.bfafbtn, .bbafin.bbafroundbtn {
+    width:              inherit;
+    border-style:       solid;
+    border-width:       2px;
+    padding:            10px;
+    box-sizing:         content-box;
+    display:            inline-block;
+    cursor:             default;
+    text-transform:     uppercase;
+    font-weight:        bold;
+}
+.bfafbtn:focus {
+    border-color:       inherit;
+    background:         inherit;
+    color:              inherit;
+}
+.bfafbtn:hover, .bbafin.bbafroundbtn:hover {
+}
+/* a button on a table's row */
+.bfafbtn.bbaffot {
+    margin-top:         10px;
+    margin-bottom:      10px;
+    padding:            5px;
+}
+/* a rounded button */
+.bfafbtn.bbafroundbtn, .bbafin.bbafroundbtn {
+    border-radius:      100%;
+    padding:            0px;
+    width:              30px;
+    height:             30px;
+    line-height:        30px;
+    vertical-align:     middle;
+    text-align:         center;
+    font-size:          20px;
+    font-weight:        bold;
+    text-transform:     none;
+}
+/* a small rounded button */
+.bbafroundbtn.small {
+    width:              20px;
+    height:             20px;
+    line-height:        20px;
+    font-size:          15px;
+    margin:             0px;
+}
+/* a rounded check */
+.bbafin.bbafroundbtn span {
+    display:            none;
+}
+.bbafinhin:checked + .bbafin.bbafroundbtn {
+}
+.bbafinhin:checked + .bbafin.bbafroundbtn:hover {
+}
+
+/* CUSTOM */
+.bbqqi {
+    margin-bottom:      5px;
+}
+
+.bbaqi {
+    table-layout:       fixed;
+    width:              100%;
+    height:             20px;
+    margin-bottom:      10px;
+    border-radius:      3px;
+    border-style:       solid;
+    border-width:       2px;
+}
+.bbaqi .bbaqil {
+    width:              35px;
+    vertical-align:     middle;
+    text-align:         center;
+}
+.bbaqi .bbaqir {
+    width:              35px;
+    vertical-align:     middle;
+    text-align:         center;
+}
+.bbaqi .bbaqic {
+    padding:            5px;
+    padding-left:       10px;
+    padding-right:      10px;
+    vertical-align:     middle;
+}
+.updown {
+    table-layout:       fixed;
+    width:              100%;
+    height:             100%;
+}
+.updownr .tcell {
+    vertical-align:     middle;
+    text-align:         center;
+    font-weight:        bold;
+}
+
+.ttable.qtxt {
+    table-layout:       fixed;
+    width:              100%;
+    height:             100%;
+
+}
+.ttable.qtxt .tcell {
+    vertical-align:     middle;
+}
+.ttable.qtxt .tcell.tr {
+    width:              35%;
+    text-align:         right;
+}
+.evlist .bbaqil, .evlistsub .bbaqil {
+    width:              20px;
+}
+.evadd .bbaqil {
+    width:              20px;
+}
+
+.bbpathitem {
+    display:            inline-block;
+    margin-right:       0px;
+}
+
+.bbpathitem .ttable {
+    margin-bottom:      10px;
+}
+.bbpathitem .tcell.tl {
+    padding:            5px;
+    padding-left:       0px;
+    vertical-align:     middle;
+}
+.bbpathitem .tcell.tr {
+    border-radius:      3px;
+    border-style:       solid;
+    border-width:       2px;
+    padding:            5px;
+    vertical-align:     middle;
+}
+
+/* beeloading */
+.loadingbee {
+    min-width:          75px;
+    min-height:         75px;
+
+    text-align:         center;
+
+    position:           absolute;
+    left:               50%;
+    top:                50%;
+    transform:          translate(-50%, -50%);
+    z-index:            20;
+}
+.loadingbee img {
+    width:              60%;
+}
+
+.loginbee {
+    width:              200px;
+    height:             200px;
+
+    text-align:         center;
+
+    position:           absolute;
+    left:               50%;
+    top:                50%;
+    transform:          translate(-50%, -50%);
+    z-index:            5;
+}
+.loginbee img {
+    width:              100%;
+    z-index:            5;
+}
+
+.loadingbee.showerror {
+    border:             solid 2px;
+    padding-bottom:     15px;
+    border-radius:      2px;
+}
+.loadingbee.showerror .error {
+    /*border-bottom:      solid 1px;*/
+    padding:            15px;
+    margin-bottom:      15px;
+    font-weight:        bold;
+}
+
+.rotate45 {
+    -ms-transform: rotate(-40deg);
+    -webkit-transform: rotate(-40deg);
+    transform: rotate(-40deg);
+}

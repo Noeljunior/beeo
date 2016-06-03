@@ -1,0 +1,23 @@
+@import "../baseline.scss";
+
+/* use some std colours */
+@import "../stdcolours.scss";
+
+$CBGP: #100009;
+$CBGS: #380020;
+$CCN:  #882D61;
+$CFGP: #D7A0BF;
+$CFGS: #F3DEEA;
+
+/* skeleton */
+@include skeleton_dark($CBGP, $CBGS, $CCN, $CFGP, $CFGS);
+
+/* and elements */
+@include elements_dark("", $CBGP, $CBGS, $CCN, $CFGP, $CFGS);
+
+
+/* elements modifiers */
+@include elements_dark(".bbacred",   $CSTDRBGP, $CSTDRBGS, $CSTDRCN, $CSTDRFGP, $CSTDRFGS);
+@include elements_dark(".bbacgreen", $CSTDGBGP, $CSTDGBGS, $CSTDGCN, $CSTDGFGP, $CSTDGFGS);
+@include elements_dark(".bbacyel",   $CSTDYBGP, $CSTDYBGS, $CSTDYCN, $CSTDYFGP, $CSTDYFGS);
+@include elements_dark(".bbacblue",  $CSTDBBGP, $CSTDBBGS, $CSTDBCN, $CSTDBFGP, $CSTDBFGS);
